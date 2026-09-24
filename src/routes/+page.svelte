@@ -6,19 +6,17 @@
 
 <svelte:head>
     <title>
-        VAK - Videos
+        VAK - Vincent's Adventskalender
     </title>
 </svelte:head>
 
 <div class="min-h-screen w-screen bg-primary text-quartiary">
     <header class="border-b border-primary/20 bg-secondary">
         <div class="flex h-16 items-center justify-between gap-4 px-4 lg:px-8">
-            <button type="button" class="grid size-9 place-items-center text-2xl text-quartiary lg:hidden" aria-label="Open navigation">☰</button>
             <a href="/" class="flex shrink-0 items-center gap-2 text-quartiary">
                 <img src={logo} alt="VAK" class="size-9 object-cover" />
                 <span class="hidden font-mono text-lg font-bold tracking-tight sm:inline">VAK VIDEO</span>
             </a>
-            <span class="hidden font-mono text-xs text-quartiary/70 md:block">ARCHIVE 2026</span>
         </div>
     </header>
 
@@ -33,7 +31,7 @@
             </div>
             <div class="grid gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
                 {#each videos as video}
-                    <Door day={video.day} description={video.description} tags={video.tags} />
+                    <Door day={video.day} title={video.title} description={video.description} tags={video.tags} />
                 {/each}
             </div>
         </main>

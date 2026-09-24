@@ -15,7 +15,7 @@
     import '@videojs/html/ui/time-slider';
     import '@videojs/html/ui/volume-slider';
     import '@videojs/html/media/youtube-video';
-    let { source, description, tags = [] }: { source: string; description?: string; tags?: string[] } = $props();
+    let { source, title, description, tags = [] }: { source: string; title?: string; description?: string; tags?: string[] } = $props();
 
     import type { VideoPlayerElement } from '@videojs/html/video';
     import { onMount } from 'svelte';
@@ -99,9 +99,12 @@
                 </media-controls-content>
             </media-controls>
         </video-player>
-        {#if description}
+        {#if title || description}
             <div class="border-t-2 border-quartiary bg-secondary px-4 pb-4 pt-3 text-sm leading-relaxed text-quartiary">
-                <p>{description}</p>
+                {#if title}
+                    <h1 class="mb-2 text-lg font-bold leading-tight">{title}</h1>
+                {/if}
+                {#if description}<p>{description}</p>{/if}
                 {#if tags.length}
                     <div class="mt-3 flex flex-wrap gap-1.5">
                         {#each tags as tag}

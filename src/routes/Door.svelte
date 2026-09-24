@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { day, description, tags }: { day: number; description: string; tags: string[] } = $props();
+	let { day, title, description, tags }: { day: number; title: string; description: string; tags: string[] } = $props();
 </script>
 
 <a href={`/archive/${day}`} class="group block min-w-0">
@@ -20,9 +20,7 @@
 				{day}
 			</div>
 			<div class="min-w-0">
-				<h2 class="line-clamp-2 font-semibold leading-tight text-quartiary">
-					VAK Video Adventskalender: Türchen {day}
-				</h2>
+				<h2 class="line-clamp-2 font-semibold leading-tight text-quartiary">{title}</h2>
 				<p class="mt-1 text-xs text-quartiary/70">VAK Video · Archive 2026</p>
 				<p class="mt-2 line-clamp-2 text-sm leading-snug text-quartiary/80">{description}</p>
 				<div class="mt-2 flex flex-wrap gap-1">
