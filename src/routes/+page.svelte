@@ -2,6 +2,22 @@
 	import Door from "./Door.svelte";
     import logo from '$lib/assets/logo.png';
     import videos from '$lib/videos.json';
+
+    function check_day(date: string | Date): boolean {
+        if (!import.meta.env.PROD) return true;
+
+        const today = new Date();
+        const todayKey = [today.getFullYear(), today.getMonth() + 1, today.getDate()]
+            .map((value, index) => index === 0 ? String(value) : String(value).padStart(2, '0'))
+            .join('-');
+        const dateKey = typeof date === 'string'
+            ? date.slice(0, 10)
+            : [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+                .map((value, index) => index === 0 ? String(value) : String(value).padStart(2, '0'))
+                .join('-');
+
+        return dateKey <= todayKey;
+    }
 </script>
 
 <svelte:head>
@@ -31,7 +47,9 @@
             </div>
             <div class="grid gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
                 {#each videos as video}
-                    <Door day={video.day} title={video.title} description={video.description} tags={video.tags} />
+                    {#if check_day(video.date)}
+                        <Door day={video.day} title={video.title} description={video.description} tags={video.tags} />
+                    {/if}
                 {/each}
             </div>
         </main>
