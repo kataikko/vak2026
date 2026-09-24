@@ -18,6 +18,10 @@
 
         return dateKey <= todayKey;
     }
+
+    function available_videos(): number {
+        return videos.filter((video) => check_day(video.date)).length;
+    }
 </script>
 
 <svelte:head>
@@ -43,7 +47,7 @@
                     <p class="font-mono text-xs uppercase tracking-widest text-quartiary">VAK Video</p>
                     <h1 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Adventskalender 2026</h1>
                 </div>
-                <span class="font-mono text-xs text-quartiary/60">{videos.length} videos</span>
+                <span class="font-mono text-xs text-quartiary/60">{available_videos()}/{videos.length} videos</span>
             </div>
             <div class="grid gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
                 {#each videos as video}
