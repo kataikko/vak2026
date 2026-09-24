@@ -1,47 +1,47 @@
 [
-  {
-    "day": 1,
-    "date": "2026-12-01",
-    "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-    "poster": "/img/1.webp",
-    "title": "VAK Adventskalender: Türchen 1",
-    "description": "The first VAK Video entry of the 2026 calendar.",
-    "tags": ["VAK Video", "Calendar", "2026"]
-  },
-  {
-    "day": 8,
-    "date": "2026-12-08",
-    "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-    "poster": "/img/8.webp",
-    "title": "VAK Adventskalender: Türchen 8",
-    "description": "A new video entry from the VAK 2026 archive.",
-    "tags": ["VAK Video", "Archive", "2026"]
-  },
-  {
-    "day": 15,
-    "date": "2026-12-15",
-    "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-    "poster": "/img/15.webp",
-    "title": "VAK Adventskalender: Türchen 15",
-    "description": "Another chapter in the VAK Video calendar.",
-    "tags": ["VAK Video", "Calendar", "Archive"]
-  },
-  {
-    "day": 22,
-    "date": "2026-12-22",
-    "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-    "poster": "/img/22.webp",
-    "title": "VAK Adventskalender: Türchen 22",
-    "description": "The latest video entry from the VAK 2026 archive.",
-    "tags": ["VAK Video", "Latest", "2026"]
-  },
-  {
-    "day": 31,
-    "date": "2026-12-31",
-    "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-    "poster": "/img/31.webp",
-    "title": "VAK Adventskalender: Türchen 31",
-    "description": "The latest video entry from the VAK 2026 archive.",
-    "tags": ["VAK Video", "Latest", "2026"]
-  }
+    {
+        "day": 31,
+        "date": "2026-12-31",
+        "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        "poster": "/img/31.webp",
+        "title": "Einunddreißigstes Türchen",
+        "description": "The latest video entry from the VAK 2026 archive.",
+        "tags": ["VAK Video", "Latest", "2026"]
+    },
+    {
+        "day": 22,
+        "date": "2026-12-22",
+        "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        "poster": "/img/22.webp",
+        "title": "Zweiundzwanzigstes Türchen",
+        "description": "The latest video entry from the VAK 2026 archive.",
+        "tags": ["VAK Video", "Latest", "2026"]
+    },
+    {
+        "day": 15,
+        "date": "2026-12-15",
+        "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        "poster": "/img/15.webp",
+        "title": "Fünfzehntes Türchen",
+        "description": "Another chapter in the VAK Video calendar.",
+        "tags": ["VAK Video", "Calendar", "Archive"]
+    },
+    {
+        "day": 8,
+        "date": "2026-12-08",
+        "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        "poster": "/img/8.webp",
+        "title": "Achtes Türchen",
+        "description": "A new video entry from the VAK 2026 archive.",
+        "tags": ["VAK Video", "Archive", "2026"]
+    },
+    {
+        "day": 1,
+        "date": "2026-12-01",
+        "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        "poster": "/img/1.webp",
+        "title": "Erstes Türchen",
+        "description": "The first VAK Video entry of the 2026 calendar.",
+        "tags": ["VAK Video", "Calendar", "2026"]
+    }
 ]
