@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+
+@theme {  
+    --color-primary: #da525d;  
+    --color-secondary: #fbe6a0;  
+    --color-tertiary: #e2b540;
+    --color-quartiary: #112f2c;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer base {
+  html {
+    @apply font-sans;
+    }
+}

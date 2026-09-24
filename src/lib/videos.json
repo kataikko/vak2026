@@ -1,0 +1,22 @@
+[
+  {
+    "day": 1,
+    "description": "The first VAK Video entry of the 2026 calendar.",
+    "tags": ["VAK Video", "Calendar", "2026"]
+  },
+  {
+    "day": 8,
+    "description": "A new video entry from the VAK 2026 archive.",
+    "tags": ["VAK Video", "Archive", "2026"]
+  },
+  {
+    "day": 15,
+    "description": "Another chapter in the VAK Video calendar.",
+    "tags": ["VAK Video", "Calendar", "Archive"]
+  },
+  {
+    "day": 22,
+    "description": "The latest video entry from the VAK 2026 archive.",
+    "tags": ["VAK Video", "Latest", "2026"]
+  }
+]
