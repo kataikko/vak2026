@@ -1,15 +1,22 @@
 <script lang="ts">
 	let { day, title, description, tags }: { day: number; title: string; description: string; tags: string[] } = $props();
+    let previewFailed = $state(false);
+	const previewUrl = $derived(`/img/${day}.webp`);
 </script>
 
 <a href={`/archive/${day}`} class="group block min-w-0">
 	<article class="overflow-hidden border border-primary/30 bg-secondary shadow-sm transition duration-200 group-hover:-translate-y-1 group-hover:shadow-xl group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-tertiary">
 		<div class="relative grid aspect-video place-items-center overflow-hidden bg-gradient-to-br from-tertiary via-secondary to-primary">
-			<div class="absolute -right-4 -top-8 font-mono text-[10rem] font-black leading-none text-secondary/40 transition duration-300 group-hover:scale-110">{day}</div>
-			<div class="relative border-2 border-primary bg-secondary px-5 py-3 text-center shadow-xl">
-				<p class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-quartiary">VAK Video</p>
-				<p class="mt-1 text-3xl font-black text-quartiary">#{day}</p>
-			</div>
+			{#if !previewFailed}
+				<img src={previewUrl} alt="" class="absolute inset-0 size-full object-cover transition duration-300 group-hover:scale-105" onerror={() => (previewFailed = true)} />
+			{/if}
+			{#if previewFailed}
+				<div class="absolute -right-4 -top-8 font-mono text-[10rem] font-black leading-none text-secondary/40 transition duration-300 group-hover:scale-110">{day}</div>
+				<div class="relative border-2 border-primary bg-secondary px-5 py-3 text-center shadow-xl">
+					<p class="font-mono text-xs font-bold uppercase tracking-[0.3em] text-quartiary">VAK Video</p>
+					<p class="mt-1 text-3xl font-black text-quartiary">#{day}</p>
+				</div>
+			{/if}
 			<div class="absolute bottom-2 right-2 bg-primary px-2 py-1 font-mono text-xs font-bold text-secondary">
 				VAK #{day}
 			</div>

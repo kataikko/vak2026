@@ -15,7 +15,7 @@
     import '@videojs/html/ui/time-slider';
     import '@videojs/html/ui/volume-slider';
     import '@videojs/html/media/youtube-video';
-    let { source, title, description, tags = [] }: { source: string; title?: string; description?: string; tags?: string[] } = $props();
+    let { source, poster, title, description, tags = [] }: { source: string; poster?: string; title?: string; description?: string; tags?: string[] } = $props();
 
     import type { VideoPlayerElement } from '@videojs/html/video';
     import { onMount } from 'svelte';
@@ -23,8 +23,10 @@
     let player: VideoPlayerElement;
     let paused = $state(true);
     let muted = $state(false);
+    let posterFailed = $state(false);
     const videoId = $derived(source.match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/)?.[1] ?? (/^[\w-]{11}$/.test(source) ? source : ''));
-    const posterUrl = $derived(videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '');
+    const fallbackPosterUrl = $derived(videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '');
+    const posterUrl = $derived(poster && !posterFailed ? poster : fallbackPosterUrl);
 
     onMount(() => {
         const sync = () => {
@@ -46,7 +48,7 @@
                 {#if paused}
                     <div class="pointer-events-none absolute inset-0 z-20 bg-primary">
                         {#if posterUrl}
-                            <img src={posterUrl} alt="" class="absolute inset-0 size-full object-cover" />
+                            <img src={posterUrl} alt="" class="absolute inset-0 size-full object-cover" onerror={() => (posterFailed = true)} />
                         {/if}
                     </div>
                 {/if}

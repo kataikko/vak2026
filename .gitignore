@@ -8,6 +8,7 @@ node_modules
 /.svelte-kit
 /build
 /vak_dev
+/vak
 
 # OS
 .DS_Store
