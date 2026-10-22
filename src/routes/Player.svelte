@@ -7,7 +7,6 @@
 	import '@videojs/html/ui/controls-group';
 	import '@videojs/html/ui/fullscreen-button';
 	import '@videojs/html/ui/mute-button';
-	import '@videojs/html/ui/play-button';
 	import '@videojs/html/ui/slider-buffer';
 	import '@videojs/html/ui/slider-fill';
 	import '@videojs/html/ui/slider-thumb';
@@ -40,6 +39,7 @@
 	let audioOnly = $state(false);
 	let audioTime = $state(0);
 	let audioElement = $state<HTMLAudioElement>();
+	let audioPlayPending = $state(false);
 	let posterFailed = $state(false);
 	const videoId = $derived(
 		source.match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/)?.[1] ??
@@ -51,10 +51,26 @@
 	const posterUrl = $derived(poster && !posterFailed ? poster : fallbackPosterUrl);
 
 	async function playAudio() {
+		if (!audioElement || audioPlayPending) return;
+		audioPlayPending = true;
 		try {
-			await audioElement?.play();
+			await audioElement.play();
 		} catch (error) {
 			console.error('Unable to start audio playback', error);
+		} finally {
+			audioPlayPending = false;
+		}
+	}
+
+	async function toggleVideoPlayback() {
+		if (player.store.paused) {
+			try {
+				await player.store.play();
+			} catch (error) {
+				console.error('Unable to start video playback', error);
+			}
+		} else {
+			player.store.pause();
 		}
 	}
 
@@ -185,9 +201,11 @@
 								{/if}
 							</button>
 						{:else}
-							<media-play-button
+							<button
+								type="button"
 								class="grid size-9 shrink-0 cursor-pointer place-items-center border-2 border-quartiary bg-tertiary text-xl leading-none text-quartiary"
 								aria-label={paused ? 'Play' : 'Pause'}
+								onclick={() => void toggleVideoPlayback()}
 							>
 								{#if paused}
 									<svg
@@ -216,7 +234,7 @@
 										/>
 									</svg>
 								{/if}
-							</media-play-button>
+							</button>
 						{/if}
 						{#if audioOnly}
 							<input
