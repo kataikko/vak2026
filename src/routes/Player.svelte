@@ -31,9 +31,11 @@
 	} = $props();
 
 	import type { VideoPlayerElement } from '@videojs/html/video';
+	import type { YouTubeAdapter } from '@videojs/youtube-video';
 	import { onMount } from 'svelte';
 
 	let player: VideoPlayerElement;
+	let youtubeVideo: HTMLElement & { adapter: YouTubeAdapter };
 	let paused = $state(true);
 	let muted = $state(false);
 	let audioOnly = $state(false);
@@ -97,6 +99,17 @@
 	onMount(() => {
 		const element = audioElement;
 		if (!element) return;
+		const youtubeAdapter = youtubeVideo.adapter;
+		let captionsApiListenerAttached = false;
+		const disableCaptions = () => {
+			const engine = youtubeAdapter.engine;
+			if (!engine) return;
+			if (!captionsApiListenerAttached) {
+				engine.addEventListener('onApiChange', disableCaptions);
+				captionsApiListenerAttached = true;
+			}
+			engine.setOption('captions', 'track', {});
+		};
 		const sync = () => {
 			if (!audioOnly) {
 				paused = player.store.paused;
@@ -112,6 +125,8 @@
 		element.addEventListener('timeupdate', updateAudio);
 		element.addEventListener('play', updateAudio);
 		element.addEventListener('pause', updateAudio);
+		youtubeAdapter.addEventListener('loadedmetadata', disableCaptions);
+		youtubeAdapter.addEventListener('play', disableCaptions);
 		if ('mediaSession' in navigator) {
 			navigator.mediaSession.metadata = new MediaMetadata({
 				title: title ?? 'VAK',
@@ -133,6 +148,8 @@
 			element.removeEventListener('timeupdate', updateAudio);
 			element.removeEventListener('play', updateAudio);
 			element.removeEventListener('pause', updateAudio);
+			youtubeAdapter.removeEventListener('loadedmetadata', disableCaptions);
+			youtubeAdapter.removeEventListener('play', disableCaptions);
 		};
 	});
 </script>
@@ -142,13 +159,16 @@
 		<video-player bind:this={player} class="block min-h-32 w-full bg-tertiary p-3">
 			<media-container class="relative block aspect-video w-full overflow-hidden bg-primary">
 				<audio bind:this={audioElement} src={audio} preload="metadata" class="hidden"></audio>
-				<youtube-video src={source} playsinline preload="metadata" class="block size-full">
-					<track
-						kind="captions"
-						srclang="de"
-						label="Keine gesprochenen Inhalte"
-						src="data:text/vtt,WEBVTT%0A"
-					/>
+				<youtube-video
+					bind:this={youtubeVideo}
+					source={{
+						src: source,
+						engine: { youtube: { cc_lang_policy: 3, cc_load_policy: 0 } }
+					}}
+					playsinline
+					preload="metadata"
+					class="block size-full"
+				>
 				</youtube-video>
 				{#if paused}
 					<div class="pointer-events-none absolute inset-0 z-20 bg-primary">
