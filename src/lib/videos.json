@@ -25,7 +25,8 @@
 		"source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
 		"poster": "/img/15.webp",
 		"audio": "/audio/rick.webm",
-		"title": "Fünfzehntes Türchen",
+		"title": "Stephan",
+		"playlist": "https://crates.app/playlist/vak-2026-steph-mJLly1iM4E9A",
 		"description": "Another chapter in the VAK Video calendar.",
 		"tags": ["VAK Video", "Calendar", "Archive"]
 	},
@@ -33,9 +34,10 @@
 		"day": 8,
 		"date": "2026-12-08",
 		"source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-		"poster": "/img/8.webp",
-		"audio": "/audio/rick.webm",
-		"title": "Achtes Türchen",
+		"poster": "/img/dirk.png",
+		"audio": "/audio/dirk.mp3",
+		"title": "Dirk",
+		"playlist": "https://crates.app/playlist/vak-2026-dirk-ASttvHQvrzjn",
 		"description": "A new video entry from the VAK 2026 archive.",
 		"tags": ["VAK Video", "Archive", "2026"]
 	},
@@ -43,9 +45,10 @@
 		"day": 1,
 		"date": "2026-12-01",
 		"source": "https://www.youtube.com/watch?v=mw9zYSNRzSs",
-		"poster": "/img/VAK 2026 - Vincent.png",
+		"poster": "/img/vincent.png",
 		"audio": "/audio/vincent.mp3",
-		"title": "Erstes Türchen",
+		"title": "Vincent",
+		"playlist": "https://crates.app/playlist/vak-2026-vincent-Gfj3pVR3CBIK",
 		"description": "The first VAK Video entry of the 2026 calendar.",
 		"tags": ["VAK Video", "Calendar", "2026"]
 	}
